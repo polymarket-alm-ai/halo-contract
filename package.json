@@ -1,0 +1,39 @@
+{
+  "name": "halo-vault",
+  "version": "1.0.0",
+  "description": "Vault for USDT deposits with Symbiosis cross-chain swap to USDC on Polygon",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:vault": "hardhat deploy --network bsc --tags Vault",
+    "deploy:vault-erc4626": "hardhat deploy --network bsc --tags VaultERC4626",
+    "deploy:bsc-testnet": "hardhat deploy --network bsc-testnet --tags VaultERC4626",
+    "verify:bsc": "hardhat etherscan-verify --network bsc",
+    "deposit": "hardhat run scripts/depositExample.ts --network bsc",
+    "check-status": "hardhat run scripts/checkSwapStatus.ts",
+    "valuer": "hardhat run scripts/valuer.ts --network bsc",
+    "valuer:dry-run": "hardhat run scripts/valuer.ts --network bsc -- --dry-run",
+    "valuer:state": "hardhat run scripts/valuer.ts --network bsc -- --state",
+    "valuer:watch": "hardhat run scripts/valuer.ts --network bsc -- --watch 30",
+    "agent:state": "hardhat run scripts/agentBridge.ts --network bsc -- --dry-run",
+    "agent:bridge": "hardhat run scripts/agentBridge.ts --network bsc",
+    "agent:bridge:conservative": "hardhat run scripts/agentBridge.ts --network bsc -- --strategy=conservative",
+    "agent:bridge:balanced": "hardhat run scripts/agentBridge.ts --network bsc -- --strategy=balanced",
+    "agent:bridge:aggressive": "hardhat run scripts/agentBridge.ts --network bsc -- --strategy=aggressive",
+    "agent:aster": "hardhat run scripts/agentAsterDex.ts --network bsc --",
+    "symbiosis-test": "ts-node scripts/symbiosisHelper.ts"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^20.11.0",
+    "hardhat": "^2.22.0",
+    "hardhat-deploy": "^0.12.4",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "axios": "^1.6.7"
+  }
+}
