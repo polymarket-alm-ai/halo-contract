@@ -5,10 +5,13 @@
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test",
+    "deploy:mock-usdt": "hardhat deploy --network bsc-testnet --tags MockUSDT",
     "deploy:vault": "hardhat deploy --network bsc --tags Vault",
     "deploy:vault-erc4626": "hardhat deploy --network bsc --tags HaloVault",
     "deploy:bsc-testnet": "hardhat deploy --network bsc-testnet --tags HaloVault",
+    "deploy:testnet:all": "hardhat deploy --network bsc-testnet --tags MockUSDT,HaloVault",
     "verify:bsc": "hardhat etherscan-verify --network bsc",
+    "claim-tokens": "hardhat run scripts/claimTestTokens.ts --network bsc-testnet",
     "deposit": "hardhat run scripts/depositExample.ts --network bsc",
     "check-status": "hardhat run scripts/checkSwapStatus.ts",
     "valuer": "hardhat run scripts/valuer.ts --network bsc",

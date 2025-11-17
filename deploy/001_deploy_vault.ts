@@ -23,10 +23,13 @@ const deployHaloVault: DeployFunction = async (
   console.log(`Deploying HaloVault on ${network.name}...`);
   console.log(`Deployer address: ${deployer}`);
 
+  // Get MockUSDT deployment if available (testnet)
+  const mockUSDTDeployment = await deployments.getOrNull("MockUSDT");
+
   // Contract addresses
   const USDT_ADDRESS = {
     bsc: "0x55d398326f99059fF775485246999027B3197955",
-    "bsc-testnet": "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd",
+    "bsc-testnet": mockUSDTDeployment?.address || "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd",
   };
 
   const SYMBIOSIS_GATEWAY = {
