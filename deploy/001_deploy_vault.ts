@@ -29,7 +29,9 @@ const deployHaloVault: DeployFunction = async (
   // Contract addresses
   const USDT_ADDRESS = {
     bsc: "0x55d398326f99059fF775485246999027B3197955",
-    "bsc-testnet": mockUSDTDeployment?.address || "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd",
+    "bsc-testnet":
+      mockUSDTDeployment?.address ||
+      "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd",
   };
 
   const SYMBIOSIS_GATEWAY = {
@@ -41,7 +43,7 @@ const deployHaloVault: DeployFunction = async (
   const AGENT_WALLET = process.env.AGENT_WALLET || deployer;
   const AGENT = process.env.AGENT || deployer;
   const VALUER = process.env.VALUER || deployer;
-  const MIN_DEPOSIT = ethers.parseEther("100"); // 100 USDT
+  const MIN_DEPOSIT = ethers.parseEther("1"); // 1 USDT
   const MAX_VALUATION_AGE = 24 * 60 * 60; // 24 hours
 
   const usdt = USDT_ADDRESS[network.name as keyof typeof USDT_ADDRESS];
