@@ -215,7 +215,7 @@ contract HaloVault is ERC4626, Ownable, ReentrancyGuard {
     ) public virtual override nonReentrant returns (uint256 shares) {
         if (!depositsEnabled) revert DepositsDisabled();
         if (assets < minDeposit) revert InsufficientAmount();
-        if (!isValuationFresh()) revert StaleValuation();
+        // if (!isValuationFresh()) revert StaleValuation();
 
         shares = previewDeposit(assets);
 
@@ -274,7 +274,7 @@ contract HaloVault is ERC4626, Ownable, ReentrancyGuard {
         address owner
     ) public virtual override nonReentrant returns (uint256 shares) {
         if (!withdrawalsEnabled) revert WithdrawalsDisabled();
-        if (!isValuationFresh()) revert StaleValuation();
+        // if (!isValuationFresh()) revert StaleValuation();
 
         uint256 availableAssets = IERC20(asset()).balanceOf(address(this));
         if (assets > availableAssets) revert ExceedsAvailableAssets();
